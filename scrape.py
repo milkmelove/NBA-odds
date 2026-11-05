@@ -1,9 +1,10 @@
-"""Snapshot NBA DraftKings lines, player props and injuries from ESPN's public feeds.
-Writes odds.json.gz (raw ESPN items, nothing dropped) + meta.json to ./out"""
+"""Snapshot DraftKings lines, props and injuries (NBA + NCAA men's/women's basketball) from ESPN feeds.
+Writes odds.json.gz (raw ESPN items) + meta.json to ./out"""
 import json, gzip, time, os, sys, urllib.request, datetime as dt
 
-UA = {"User-Agent": "Mozilla/5.0 (nba-odds-snapshot)"}
+UA = {"User-Agent": "Mozilla/5.0 (odds-snapshot)"}
 def get(url, tries=3):
+    err = ""
     for i in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
@@ -13,32 +14,44 @@ def get(url, tries=3):
     print("FAIL", url, err, file=sys.stderr)
     return None
 
+LEAGUES = {"nba": "", "mens-college-basketball": "&groups=50&limit=400",
+           "womens-college-basketball": "&groups=50&limit=400"}
 now = dt.datetime.now(dt.timezone.utc)
-et = now - dt.timedelta(hours=5)  # ET (close enough for choosing dates)
+et = now - dt.timedelta(hours=5)
 dates = sorted({et.strftime("%Y%m%d"), (et + dt.timedelta(days=1)).strftime("%Y%m%d")})
 out = {"pulled_utc": now.isoformat(), "games": []}
-for d in dates:
-    sb = get(f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates={d}")
-    if not sb: continue
-    for ev in sb.get("events", []):
-        comp = ev["competitions"][0]
-        g = {"id": ev["id"], "date": ev["date"], "name": ev["name"],
-             "status": ev["status"]["type"]["name"],
-             "teams": [(c["homeAway"], c["team"]["abbreviation"]) for c in comp["competitors"]],
-             "odds": comp.get("odds"), "props": []}
-        if g["status"] == "STATUS_SCHEDULED" or g["status"] == "STATUS_IN_PROGRESS":
-            base = f"https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/{ev['id']}/competitions/{ev['id']}/odds/100/propBets"
-            page = 1
-            while True:
-                r = get(f"{base}?limit=200&page={page}")
-                if not r: break
-                g["props"] += r.get("items", [])
-                if page >= r.get("pageCount", 1): break
-                page += 1
-        out["games"].append(g)
+stats = {}
+for lg, extra in LEAGUES.items():
+    stats[lg] = {"games": 0, "with_lines": 0, "props": 0}
+    for d in dates:
+        sb = get(f"https://site.api.espn.com/apis/site/v2/sports/basketball/{lg}/scoreboard?dates={d}{extra}")
+        if not sb: continue
+        for ev in sb.get("events", []):
+            comp = ev["competitions"][0]
+            g = {"league": lg, "id": ev["id"], "date": ev["date"], "name": ev["name"],
+                 "status": ev["status"]["type"]["name"],
+                 "teams": [(c["homeAway"], c["team"]["abbreviation"]) for c in comp["competitors"]],
+                 "odds": comp.get("odds"), "core_odds": None, "props": []}
+            if g["status"] in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS", "STATUS_HALFTIME"):
+                root = f"https://sports.core.api.espn.com/v2/sports/basketball/leagues/{lg}/events/{ev['id']}/competitions/{ev['id']}/odds"
+                co = get(root, tries=1)
+                if co and co.get("items"): g["core_odds"] = co["items"]
+                base = root + "/100/propBets"
+                page = 1
+                while True:
+                    r = get(f"{base}?limit=200&page={page}", tries=1 if lg != "nba" else 3)
+                    if not r: break
+                    g["props"] += r.get("items", [])
+                    if page >= r.get("pageCount", 1): break
+                    page += 1
+            out["games"].append(g)
+            stats[lg]["games"] += 1
+            stats[lg]["with_lines"] += bool(g["odds"] or g["core_odds"])
+            stats[lg]["props"] += len(g["props"])
 out["injuries"] = get("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries")
 os.makedirs("out", exist_ok=True)
 with gzip.open("out/odds.json.gz", "wt") as f: json.dump(out, f)
-json.dump({"pulled_utc": out["pulled_utc"], "games": len(out["games"]),
-           "props": sum(len(g["props"]) for g in out["games"])}, open("out/meta.json", "w"))
-print(open("out/meta.json").read())
+meta = {"pulled_utc": out["pulled_utc"], "games": len(out["games"]), "by_league": stats,
+        "props": sum(len(g["props"]) for g in out["games"])}
+json.dump(meta, open("out/meta.json", "w"))
+print(json.dumps(meta, indent=1))
