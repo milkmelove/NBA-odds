@@ -1,0 +1,34 @@
+2026-11-05 23:43:57,291 - root - INFO - Logging initialized. Log level: INFO (No file output)
+2026-11-05 23:43:57,355 - oddsharvester.utils.utils - INFO - No period specified, using default for volleyball: 'full_time'
+2026-11-05 23:43:57,356 - ScraperApp - INFO - Starting scraper with parameters: command=scrape_upcoming, match_links=None, sport=volleyball, date=20261105, leagues=None, seasons=None, markets=['home_away'], max_pages=None, proxy_url=[], browser_user_agent=None, browser_locale_timezone=None, browser_timezone_id=None, scrape_odds_history=False, target_bookmaker=None, headless=True, preview_submarkets_only=False, bookies_filter=all, period=full_time, base_url=None, local_kickoff=False
+2026-11-05 23:43:57,356 - ProxyManager - INFO - No proxy provided, running without proxy.
+2026-11-05 23:43:57,361 - PlaywrightManager - INFO - Starting Playwright...
+2026-11-05 23:43:58,049 - PlaywrightManager - INFO - Browser: Chromium 156.0.8078.4, user agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36
+2026-11-05 23:43:58,235 - PlaywrightManager - INFO - Playwright initialized successfully.
+2026-11-05 23:43:58,235 - ScraperApp - INFO - Scraping upcoming matches for sport=volleyball, date=20261105, leagues=None, markets=['home_away'], scrape_odds_history=False, target_bookmaker=None
+2026-11-05 23:43:58,235 - ScraperApp - INFO - Starting scraping for 1 league/season combo(s)
+2026-11-05 23:43:58,236 - ScraperApp - INFO - [1/1] Listing: all leagues
+2026-11-05 23:43:58,236 - OddsPortalScraper - INFO - Fetching upcoming odds from https://www.oddsportal.com/matches/volleyball/20261105/
+2026-11-05 23:43:59,359 - CookieDismisser - INFO - Checking for cookie banner...
+2026-11-05 23:44:00,230 - CookieDismisser - INFO - Cookie banner found. Dismissing it.
+2026-11-05 23:44:00,281 - OddsPortalScraper - INFO - Setting odds format: Decimal Odds
+2026-11-05 23:44:00,397 - OddsPortalScraper - INFO - Current odds format detected: Decimal Odds
+2026-11-05 23:44:00,397 - OddsPortalScraper - INFO - Odds format is already set to 'Decimal Odds'. Skipping.
+2026-11-05 23:44:00,397 - OddsPortalScraper - INFO - Scrolling page to load all upcoming matches...
+2026-11-05 23:44:00,397 - PageScroller - INFO - Will scroll to the bottom of the page to load all content.
+2026-11-05 23:44:00,410 - PageScroller - INFO - Initial element count: 0
+2026-11-05 23:44:00,410 - PageScroller - INFO - Initial page height: 2517
+2026-11-05 23:44:02,462 - PageScroller - INFO - Current element count: 10 (height: 2562)
+2026-11-05 23:44:04,475 - PageScroller - INFO - Current element count: 11 (height: 2562)
+2026-11-05 23:44:06,487 - PageScroller - INFO - Current element count: 11 (height: 2562)
+2026-11-05 23:44:08,501 - PageScroller - INFO - Current element count: 11 (height: 2562)
+2026-11-05 23:44:10,518 - PageScroller - INFO - Current element count: 11 (height: 2562)
+2026-11-05 23:44:10,518 - PageScroller - INFO - Content stabilized at 11 elements. Scrolling complete.
+2026-11-05 23:44:10,609 - OddsPortalScraper - INFO - Found 11 event rows.
+2026-11-05 23:44:10,609 - OddsPortalScraper - INFO - Extracted 0 unique match links (1 offscreen rows skipped, 0 short links dropped, 0 rows of another sport dropped, 10 started/finished rows skipped).
+2026-11-05 23:44:10,628 - OddsPortalScraper - WARNING - No match links found for upcoming matches.
+2026-11-05 23:44:10,628 - ScraperApp - INFO - Collected 0 unique links across 1 combo(s) (0 errored)
+2026-11-05 23:44:10,628 - ScraperApp - INFO - Scraping completed: 1/1 combos successful, 0 total matches scraped, 0 failed (0.0% success rate)
+2026-11-05 23:44:10,628 - PlaywrightManager - INFO - Cleaning up Playwright resources...
+2026-11-05 23:44:10,719 - PlaywrightManager - INFO - Playwright resources cleanup complete.
+2026-11-05 23:44:10,720 - oddsharvester.cli.commands._scrape - ERROR - Scraper did not return valid data.

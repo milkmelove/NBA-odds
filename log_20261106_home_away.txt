@@ -1,0 +1,142 @@
+2026-11-05 23:44:11,189 - root - INFO - Logging initialized. Log level: INFO (No file output)
+2026-11-05 23:44:11,191 - oddsharvester.utils.utils - INFO - No period specified, using default for volleyball: 'full_time'
+2026-11-05 23:44:11,191 - ScraperApp - INFO - Starting scraper with parameters: command=scrape_upcoming, match_links=None, sport=volleyball, date=20261106, leagues=None, seasons=None, markets=['home_away'], max_pages=None, proxy_url=[], browser_user_agent=None, browser_locale_timezone=None, browser_timezone_id=None, scrape_odds_history=False, target_bookmaker=None, headless=True, preview_submarkets_only=False, bookies_filter=all, period=full_time, base_url=None, local_kickoff=False
+2026-11-05 23:44:11,191 - ProxyManager - INFO - No proxy provided, running without proxy.
+2026-11-05 23:44:11,196 - PlaywrightManager - INFO - Starting Playwright...
+2026-11-05 23:44:11,582 - PlaywrightManager - INFO - Browser: Chromium 156.0.8078.4, user agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36
+2026-11-05 23:44:11,773 - PlaywrightManager - INFO - Playwright initialized successfully.
+2026-11-05 23:44:11,773 - ScraperApp - INFO - Scraping upcoming matches for sport=volleyball, date=20261106, leagues=None, markets=['home_away'], scrape_odds_history=False, target_bookmaker=None
+2026-11-05 23:44:11,774 - ScraperApp - INFO - Starting scraping for 1 league/season combo(s)
+2026-11-05 23:44:11,774 - ScraperApp - INFO - [1/1] Listing: all leagues
+2026-11-05 23:44:11,774 - OddsPortalScraper - INFO - Fetching upcoming odds from https://www.oddsportal.com/matches/volleyball/20261106/
+2026-11-05 23:44:12,786 - CookieDismisser - INFO - Checking for cookie banner...
+2026-11-05 23:44:13,827 - CookieDismisser - INFO - Cookie banner found. Dismissing it.
+2026-11-05 23:44:13,879 - OddsPortalScraper - INFO - Setting odds format: Decimal Odds
+2026-11-05 23:44:13,976 - OddsPortalScraper - INFO - Current odds format detected: Decimal Odds
+2026-11-05 23:44:13,976 - OddsPortalScraper - INFO - Odds format is already set to 'Decimal Odds'. Skipping.
+2026-11-05 23:44:13,976 - OddsPortalScraper - INFO - Scrolling page to load all upcoming matches...
+2026-11-05 23:44:13,976 - PageScroller - INFO - Will scroll to the bottom of the page to load all content.
+2026-11-05 23:44:13,991 - PageScroller - INFO - Initial element count: 0
+2026-11-05 23:44:13,991 - PageScroller - INFO - Initial page height: 2332
+2026-11-05 23:44:16,057 - PageScroller - INFO - Current element count: 13 (height: 2610)
+2026-11-05 23:44:18,070 - PageScroller - INFO - Current element count: 13 (height: 2610)
+2026-11-05 23:44:20,083 - PageScroller - INFO - Current element count: 13 (height: 2610)
+2026-11-05 23:44:22,096 - PageScroller - INFO - Current element count: 13 (height: 2610)
+2026-11-05 23:44:22,097 - PageScroller - INFO - Content stabilized at 13 elements. Scrolling complete.
+2026-11-05 23:44:22,190 - OddsPortalScraper - INFO - Found 13 event rows.
+2026-11-05 23:44:22,191 - OddsPortalScraper - INFO - Extracted 12 unique match links (1 offscreen rows skipped, 0 short links dropped, 0 rows of another sport dropped, 0 started/finished rows skipped).
+2026-11-05 23:44:22,206 - ScraperApp - INFO - Collected 12 unique links across 1 combo(s) (0 errored)
+2026-11-05 23:44:22,206 - OddsPortalScraper - INFO - Starting to scrape odds for 12 match links...
+2026-11-05 23:44:22,242 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/sancor-seguros-WAMGEOGN/sesc-volei-rj-YBFZ86zm/#ADqHPmcT
+2026-11-05 23:44:23,508 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+2026-11-05 23:44:23,652 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+2026-11-05 23:44:24,225 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:44:24,291 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:44:24,532 - OddsPortalScraper - INFO - Scraping markets: ['home_away']
+2026-11-05 23:44:24,533 - OddsPortalMarketExtractor - INFO - Scraping market: home_away (Period: FullTime)
+2026-11-05 23:44:24,533 - OddsPortalMarketExtractor - INFO - Scraping odds for market: Home/Away, specific: None, period: FullTime, preview_mode: False
+2026-11-05 23:44:24,533 - MarketTabNavigator - INFO - Attempting to navigate to market tab: Home/Away
+2026-11-05 23:44:25,919 - oddsharvester.core.browser.waits - WARNING - No match view or login modal within 2000 ms; carrying on with the page as it is.
+2026-11-05 23:44:26,240 - oddsharvester.core.browser.waits - WARNING - No match view or login modal within 2000 ms; carrying on with the page as it is.
+2026-11-05 23:44:33,944 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 1/3 timed out for https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+2026-11-05 23:44:34,255 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 1/3 timed out for https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+2026-11-05 23:44:41,948 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 2/3 timed out for https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+2026-11-05 23:44:42,258 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 2/3 timed out for https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+2026-11-05 23:44:49,963 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 3/3 timed out for https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+2026-11-05 23:44:50,271 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 3/3 timed out for https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+2026-11-05 23:44:54,692 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/sancor-seguros-WAMGEOGN/sesc-volei-rj-YBFZ86zm/#ADqHPmcT
+2026-11-05 23:44:55,792 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:44:55,817 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:44:55,913 - OddsPortalScraper - INFO - Scraping markets: ['home_away']
+2026-11-05 23:44:55,914 - OddsPortalMarketExtractor - INFO - Scraping market: home_away (Period: FullTime)
+2026-11-05 23:44:55,914 - OddsPortalMarketExtractor - INFO - Scraping odds for market: Home/Away, specific: None, period: FullTime, preview_mode: False
+2026-11-05 23:44:55,914 - MarketTabNavigator - INFO - Attempting to navigate to market tab: Home/Away
+2026-11-05 23:44:56,100 - MarketTabNavigator - INFO - Successfully navigated to Home/Away tab (hash code 'home-away').
+2026-11-05 23:44:56,101 - PeriodSelector - INFO - Period scope 2 already in the URL for 'FullTime'.
+2026-11-05 23:44:56,101 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:44:56,144 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:44:56,195 - OddsParser - INFO - Parsing odds from HTML content.
+2026-11-05 23:44:56,383 - OddsParser - INFO - Successfully parsed odds for 1 bookmakers.
+2026-11-05 23:44:56,386 - OddsPortalScraper - INFO - Successfully scraped match link: https://www.oddsportal.com/volleyball/h2h/sancor-seguros-WAMGEOGN/sesc-volei-rj-YBFZ86zm/#ADqHPmcT (attempts: 2)
+2026-11-05 23:44:57,751 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/chaumont-G06DuLNr/nice-O4MYx0BC/#pIdcWcop
+2026-11-05 23:44:59,506 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:44:59,527 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:44:59,617 - OddsPortalScraper - INFO - Scraping markets: ['home_away']
+2026-11-05 23:44:59,617 - OddsPortalMarketExtractor - INFO - Scraping market: home_away (Period: FullTime)
+2026-11-05 23:44:59,617 - OddsPortalMarketExtractor - INFO - Scraping odds for market: Home/Away, specific: None, period: FullTime, preview_mode: False
+2026-11-05 23:44:59,617 - MarketTabNavigator - INFO - Attempting to navigate to market tab: Home/Away
+2026-11-05 23:45:11,691 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/chaumont-G06DuLNr/nice-O4MYx0BC/#pIdcWcop
+2026-11-05 23:45:12,623 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:45:12,644 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:45:12,742 - OddsPortalScraper - INFO - Scraping markets: ['home_away']
+2026-11-05 23:45:12,742 - OddsPortalMarketExtractor - INFO - Scraping market: home_away (Period: FullTime)
+2026-11-05 23:45:12,742 - OddsPortalMarketExtractor - INFO - Scraping odds for market: Home/Away, specific: None, period: FullTime, preview_mode: False
+2026-11-05 23:45:12,742 - MarketTabNavigator - INFO - Attempting to navigate to market tab: Home/Away
+2026-11-05 23:45:12,862 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/chaumont-G06DuLNr/nice-O4MYx0BC/#pIdcWcop after 2 attempts: rate limited by OddsPortal: HTTP 429 on 1 request(s), first https://www.oddsportal.com/proxy/match-event/1-12-pIdcWcop-3-2-yj464.dat?geo=US&lang=en (url: https://www.oddsportal.com/volleyball/h2h/chaumont-G06DuLNr/nice-O4MYx0BC/#pIdcWcop)
+2026-11-05 23:45:14,210 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/paris-hOxAoMjj/poitiers-WEyEpt6d/#IVf5UyGd
+2026-11-05 23:45:14,527 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/paris-hOxAoMjj/poitiers-WEyEpt6d/#IVf5UyGd after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/paris-hOxAoMjj/poitiers-WEyEpt6d/#IVf5UyGd
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/paris-hOxAoMjj/poitiers-WEyEpt6d/#IVf5UyGd", waiting until "domcontentloaded"
+
+2026-11-05 23:45:15,777 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/firenze-0vrEkvMN/talmassons-8tuPRJ3a/#nTXuFe1m
+2026-11-05 23:45:16,100 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/firenze-0vrEkvMN/talmassons-8tuPRJ3a/#nTXuFe1m after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/firenze-0vrEkvMN/talmassons-8tuPRJ3a/#nTXuFe1m
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/firenze-0vrEkvMN/talmassons-8tuPRJ3a/#nTXuFe1m", waiting until "domcontentloaded"
+
+2026-11-05 23:45:17,171 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/fragolad-kagoshima-6suIJtK7/voreas-hokkaido-C2yq100p/#t8dnen7t
+2026-11-05 23:45:17,496 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/fragolad-kagoshima-6suIJtK7/voreas-hokkaido-C2yq100p/#t8dnen7t after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/fragolad-kagoshima-6suIJtK7/voreas-hokkaido-C2yq100p/#t8dnen7t
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/fragolad-kagoshima-6suIJtK7/voreas-hokkaido-C2yq100p/#t8dnen7t", waiting until "domcontentloaded"
+
+2026-11-05 23:45:18,638 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l
+2026-11-05 23:45:19,977 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+2026-11-05 23:45:20,148 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG after 2 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG", waiting until "domcontentloaded"
+
+2026-11-05 23:45:20,284 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+2026-11-05 23:45:20,422 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR after 2 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR", waiting until "domcontentloaded"
+
+2026-11-05 23:45:21,526 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/chemik-police-zLfhdaA2/rzeszow-n7UBf3Ma/#YmdSK2Fi
+2026-11-05 23:45:21,530 - oddsharvester.core.browser.waits - WARNING - No match view or login modal within 2000 ms; carrying on with the page as it is.
+2026-11-05 23:45:21,660 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/bydgoszcz-vXpb5y3f/sparta-grodzisk-mazowiecki-Eav4btaB/#UofnAgkJ
+2026-11-05 23:45:21,844 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/bydgoszcz-vXpb5y3f/sparta-grodzisk-mazowiecki-Eav4btaB/#UofnAgkJ after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/bydgoszcz-vXpb5y3f/sparta-grodzisk-mazowiecki-Eav4btaB/#UofnAgkJ
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/bydgoszcz-vXpb5y3f/sparta-grodzisk-mazowiecki-Eav4btaB/#UofnAgkJ", waiting until "domcontentloaded"
+
+2026-11-05 23:45:21,847 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/chemik-police-zLfhdaA2/rzeszow-n7UBf3Ma/#YmdSK2Fi after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/chemik-police-zLfhdaA2/rzeszow-n7UBf3Ma/#YmdSK2Fi
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/chemik-police-zLfhdaA2/rzeszow-n7UBf3Ma/#YmdSK2Fi", waiting until "domcontentloaded"
+
+2026-11-05 23:45:23,012 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/gs-caltex-riEiDeyf/ibk-tjgxEKPg/#QXNTph53
+2026-11-05 23:45:23,081 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/lks-commercecon-lodz-Q3luU2t1/mks-kalisz-xQdxU8gA/#61fzJtp4
+2026-11-05 23:45:23,332 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/gs-caltex-riEiDeyf/ibk-tjgxEKPg/#QXNTph53 after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/gs-caltex-riEiDeyf/ibk-tjgxEKPg/#QXNTph53
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/gs-caltex-riEiDeyf/ibk-tjgxEKPg/#QXNTph53", waiting until "domcontentloaded"
+
+2026-11-05 23:45:23,334 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/lks-commercecon-lodz-Q3luU2t1/mks-kalisz-xQdxU8gA/#61fzJtp4 after 1 attempts: Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.oddsportal.com/volleyball/h2h/lks-commercecon-lodz-Q3luU2t1/mks-kalisz-xQdxU8gA/#61fzJtp4
+Call log:
+  - navigating to "https://www.oddsportal.com/volleyball/h2h/lks-commercecon-lodz-Q3luU2t1/mks-kalisz-xQdxU8gA/#61fzJtp4", waiting until "domcontentloaded"
+
+2026-11-05 23:45:29,555 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 1/3 timed out for https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l
+2026-11-05 23:45:37,558 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 2/3 timed out for https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l
+2026-11-05 23:45:45,572 - oddsharvester.core.browser.hydration - WARNING - Match view hydration attempt 3/3 timed out for https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l
+2026-11-05 23:46:15,590 - OddsPortalScraper - INFO - Scraping match: https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l
+2026-11-05 23:46:17,236 - SelectionManager - INFO - Ensuring bookies-filter is set to: All Bookies
+2026-11-05 23:46:17,254 - SelectionManager - WARNING - bookies-filter target element not found for: All Bookies
+2026-11-05 23:46:17,385 - OddsPortalScraper - INFO - Scraping markets: ['home_away']
+2026-11-05 23:46:17,385 - OddsPortalMarketExtractor - INFO - Scraping market: home_away (Period: FullTime)
+2026-11-05 23:46:17,385 - OddsPortalMarketExtractor - INFO - Scraping odds for market: Home/Away, specific: None, period: FullTime, preview_mode: False
+2026-11-05 23:46:17,385 - MarketTabNavigator - INFO - Attempting to navigate to market tab: Home/Away
+2026-11-05 23:46:27,392 - OddsPortalScraper - WARNING - Failed to scrape https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l after 2 attempts: OddsPortal sent no data for the view 'home-away;2' within 10000 ms (url: https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l:home-away;2)
+2026-11-05 23:46:27,407 - OddsPortalScraper - INFO - Scraping complete: 1/12 successful (8.3%)
+2026-11-05 23:46:27,407 - OddsPortalScraper - WARNING - Failed to scrape 11 URLs (2 retryable, 9 permanent)
+2026-11-05 23:46:27,407 - ScraperApp - INFO - Scraping completed: 1/1 combos successful, 1 total matches scraped, 11 failed (8.3% success rate)
+2026-11-05 23:46:27,407 - PlaywrightManager - INFO - Cleaning up Playwright resources...
+2026-11-05 23:46:27,492 - PlaywrightManager - INFO - Playwright resources cleanup complete.
+2026-11-05 23:46:27,493 - LocalDataStorage - INFO - Successfully saved 1 record(s) to out/vb_20261106_home_away.json
+2026-11-05 23:46:27,493 - StorageManager - INFO - Successfully stored 1 records.
+Successfully scraped 1 matches (11 failed, 8.3% success rate).
+Failed URLs: ['https://www.oddsportal.com/volleyball/h2h/beskydy-fcTcxt2D/pribram-jZfh4mx8/#YR2a1IPG', 'https://www.oddsportal.com/volleyball/h2h/kangasala-Wn3rPL10/viesti-2wC5eeVt/#YqfeQXnR', 'https://www.oddsportal.com/volleyball/h2h/chaumont-G06DuLNr/nice-O4MYx0BC/#pIdcWcop', 'https://www.oddsportal.com/volleyball/h2h/paris-hOxAoMjj/poitiers-WEyEpt6d/#IVf5UyGd', 'https://www.oddsportal.com/volleyball/h2h/firenze-0vrEkvMN/talmassons-8tuPRJ3a/#nTXuFe1m', 'https://www.oddsportal.com/volleyball/h2h/fragolad-kagoshima-6suIJtK7/voreas-hokkaido-C2yq100p/#t8dnen7t', 'https://www.oddsportal.com/volleyball/h2h/bedzin-AuaD2g5f/jaworzno-6VPYGXuF/#vsei1b6l', 'https://www.oddsportal.com/volleyball/h2h/bydgoszcz-vXpb5y3f/sparta-grodzisk-mazowiecki-Eav4btaB/#UofnAgkJ', 'https://www.oddsportal.com/volleyball/h2h/chemik-police-zLfhdaA2/rzeszow-n7UBf3Ma/#YmdSK2Fi', 'https://www.oddsportal.com/volleyball/h2h/lks-commercecon-lodz-Q3luU2t1/mks-kalisz-xQdxU8gA/#61fzJtp4', 'https://www.oddsportal.com/volleyball/h2h/gs-caltex-riEiDeyf/ibk-tjgxEKPg/#QXNTph53']

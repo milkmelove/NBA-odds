@@ -1,0 +1,27 @@
+[
+    {
+        "scraped_date": "2026-11-05 23:44:55 UTC",
+        "match_date": "2026-11-06 21:30:00 UTC",
+        "season": null,
+        "match_link": "https://www.oddsportal.com/volleyball/h2h/sancor-seguros-WAMGEOGN/sesc-volei-rj-YBFZ86zm/#ADqHPmcT",
+        "home_team": "Sancor Seguros W",
+        "away_team": "SESC-RJ W",
+        "league_name": "Superliga Women",
+        "home_score": null,
+        "away_score": null,
+        "partial_results": null,
+        "venue": null,
+        "venue_town": null,
+        "venue_country": "Brazil",
+        "match_info": null,
+        "home_away_market": [
+            {
+                "1": "4.10",
+                "2": "1.22",
+                "bookmaker_name": "Fanatics",
+                "period": "FullTime",
+                "submarket_name": "Home/Away"
+            }
+        ]
+    }
+]
