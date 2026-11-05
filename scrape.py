@@ -1,4 +1,4 @@
-"""Snapshot DraftKings lines, props and injuries (NBA + NCAA men's/women's basketball) from ESPN feeds.
+"""Snapshot DraftKings lines, props and injuries (NBA + NFL + NCAA men's/women's basketball) from ESPN feeds.
 Writes odds.json.gz (raw ESPN items) + meta.json to ./out"""
 import json, gzip, time, os, sys, urllib.request, datetime as dt
 
@@ -14,17 +14,21 @@ def get(url, tries=3):
     print("FAIL", url, err, file=sys.stderr)
     return None
 
-LEAGUES = {"nba": "", "mens-college-basketball": "&groups=50&limit=400",
-           "womens-college-basketball": "&groups=50&limit=400"}
+# key -> (sport path, league path, extra query, use dates?)
+LEAGUES = {"nba": ("basketball", "nba", "", True),
+           "mens-college-basketball": ("basketball", "mens-college-basketball", "&groups=50&limit=400", True),
+           "womens-college-basketball": ("basketball", "womens-college-basketball", "&groups=50&limit=400", True),
+           "nfl": ("football", "nfl", "", False)}  # NFL: scoreboard default = current week
 now = dt.datetime.now(dt.timezone.utc)
 et = now - dt.timedelta(hours=5)
 dates = sorted({et.strftime("%Y%m%d"), (et + dt.timedelta(days=1)).strftime("%Y%m%d")})
 out = {"pulled_utc": now.isoformat(), "games": []}
 stats = {}
-for lg, extra in LEAGUES.items():
+for lg, (sport, path, extra, use_dates) in LEAGUES.items():
     stats[lg] = {"games": 0, "with_lines": 0, "props": 0}
-    for d in dates:
-        sb = get(f"https://site.api.espn.com/apis/site/v2/sports/basketball/{lg}/scoreboard?dates={d}{extra}")
+    for d in (dates if use_dates else [None]):
+        q = f"?dates={d}{extra}" if d else "?limit=100"
+        sb = get(f"https://site.api.espn.com/apis/site/v2/sports/{sport}/{path}/scoreboard{q}")
         if not sb: continue
         for ev in sb.get("events", []):
             comp = ev["competitions"][0]
@@ -33,13 +37,13 @@ for lg, extra in LEAGUES.items():
                  "teams": [(c["homeAway"], c["team"]["abbreviation"]) for c in comp["competitors"]],
                  "odds": comp.get("odds"), "core_odds": None, "props": []}
             if g["status"] in ("STATUS_SCHEDULED", "STATUS_IN_PROGRESS", "STATUS_HALFTIME"):
-                root = f"https://sports.core.api.espn.com/v2/sports/basketball/leagues/{lg}/events/{ev['id']}/competitions/{ev['id']}/odds"
+                root = f"https://sports.core.api.espn.com/v2/sports/{sport}/leagues/{path}/events/{ev['id']}/competitions/{ev['id']}/odds"
                 co = get(root, tries=1)
                 if co and co.get("items"): g["core_odds"] = co["items"]
                 base = root + "/100/propBets"
                 page = 1
                 while True:
-                    r = get(f"{base}?limit=200&page={page}", tries=1 if lg != "nba" else 3)
+                    r = get(f"{base}?limit=200&page={page}", tries=1 if lg in ("mens-college-basketball","womens-college-basketball") else 3)
                     if not r: break
                     g["props"] += r.get("items", [])
                     if page >= r.get("pageCount", 1): break
