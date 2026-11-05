@@ -18,10 +18,21 @@ jobs:
         run: |
           pip install oddsharvester
           playwright install --with-deps chromium
-      - name: Scrape volleyball (today + tomorrow)
+      - name: Scrape
         continue-on-error: true
         run: |
           mkdir -p out
-          for d in $(date -u +%Y%m%d) $(date -u -d "+1 day" +%Y%m%d); do
-            oddsharvester upcoming -s volleyball -d $d -m home_away --headless -f json -o out/vb_${d}_home_away.json > out/log_${d}_home_away.txt 2>&1 || true
-            oddsharvester upcoming -s volleyball -
+          for d in $(date -u +%Y%m%d) $(date -u -d +1day +%Y%m%d); do
+            for m in home_away total_points_over_under; do
+              oddsharvester upcoming -s volleyball -d $d -m $m --headless -f json -o out/vb_${d}_$m.json > out/log_${d}_$m.txt 2>&1 || true
+            done
+          done
+      - name: Publish
+        run: |
+          cd out
+          git init -q -b volleyball-test
+          git config user.email "bot@users.noreply.github.com"
+          git config user.name "bot"
+          git add -A
+          git commit -q -m "volleyball test"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" volleyball-test
